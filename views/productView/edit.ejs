@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+</head>
+
+<body>
+    <h1>Edit Product</h1>
+    <form action="/products/<%= product._id%>?_method=PUT" method="POST">
+        <div>
+            <label for="name">Product Name</label>
+            <input type="text" id="name" name="product[name]" value="<%=product.name%>">
+        </div>
+        <div>
+            <label for="brand">Brand</label>
+            <input type="text" id="brand" name="product[brand]" value="<%=product.brand%>">
+        </div>
+        <div>
+            <label for="category">Category</label>
+            <input type="text" id="category" name="product[category]" value="<%=product.category%>">
+        </div>
+        <div>
+            <label for="originPrice">Original Price</label>
+            <input type="text" id="originPrice" name="product[originPrice]" value="<%=product.originPrice%>">
+        </div>
+        <div>
+            <label for="ml">Volume</label>
+            <input type="text" id="ml" name="product[ml]" value="<%=product.ml%>">
+        </div>
+        <div>
+            <label for="lowestPrice">Lowest Price</label>
+            <input type="text" id="lowestPrice" name="product[lowestPrice]" value="<%=product.lowestPrice%>">
+        </div>
+        <div>
+            <label for="lowestPerMl">Lowest Price Per ML</label>
+            <input type="text" id="lowestPerMl" name="product[lowestPerMl]" value="<%=product.lowestPerMl%>">
+        </div>
+        <button>Update Product</button>
+    </form>
+    <a href="/products/<%=product._id%>">All Products</a>
+</body>
+
+</html>
