@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Product</title>
-</head>
-
-<body>
-    <h1>Edit Product</h1>
+<% layout('/layouts/boilerplate')%>
+    <!-- <h1>Edit Product</h1>
     <form action="/products/<%= product._id%>?_method=PUT" method="POST">
         <div>
             <label for="name">Product Name</label>
@@ -41,7 +31,74 @@
         </div>
         <button>Update Product</button>
     </form>
-    <a href="/products/<%=product._id%>">All Products</a>
-</body>
+    <a href="/products/<%=product._id%>">Return</a> -->
 
-</html>
+
+    <div class="row">
+        <h1 class="text-center">New Product</h1>
+        <div class="col-6 offset-3">
+            <form action="/products/<%= product._id%>?_method=PUT" method="POST">
+                <div class="mb-3">
+                    <label class="form-label" for="name">Product Name</label>
+                    <input class="form-control" type="text" id="name" name="product[name]" value="<%=product.name%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="brand">Brand</label>
+                    <input class="form-control" type="text" id="brand" name="product[brand]" value="<%=product.brand%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="category">Category</label>
+                    <input class="form-control" type="text" id="category" name="product[category]"
+                        value="<%=product.category%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="originPrice">Original Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="originPrice-label">$</span>
+                        <input type="text" class="form-control" id="originPrice" placeholder="0.00"
+                            aria-label="originPrice" aria-describedby="originPrice-label" name="product[originPrice]"
+                            value="<%=product.originPrice%>">
+                    </div>
+                </div>
+                <!-- <div class="mb-3">
+                    <label class="form-label" for="originPrice">Original Price</label>
+                    <input class="form-control" type="text" id="originPrice" name="product[originPrice]">
+                </div> -->
+                <div class="mb-3">
+                    <label class="form-label" for="ml">Volume</label>
+                    <input class="form-control" type="text" id="ml" name="product[ml]" value="<%=product.ml%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="lowestPrice">Lowest Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="lowestPrice-label">$</span>
+                        <input type="text" class="form-control" id="lowestPrice" placeholder="0.00"
+                            aria-label="lowestPrice" aria-describedby="lowestPrice-label" name="product[lowestPrice]"
+                            value="<%=product.lowestPrice%>">
+                    </div>
+                </div>
+                <!-- <div class="mb-3">
+                        <label class="form-label" for="lowestPrice">Lowest Price</label>
+                        <input class="form-control" type="text" id="lowestPrice" name="product[lowestPrice]">
+                    </div> -->
+                <div class="mb-3">
+                    <label class="form-label" for="lowestPerMl">Lowest Price Per ML</label>
+                    <input class="form-control" type="text" id="lowestPerMl" name="product[lowestPerMl]"
+                        value="<%=product.lowestPerMl%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image Url</label>
+                    <input class="form-control" type="text" id="image" name="product[image]" value="<%=product.image%>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description"
+                        name="product[description]"><%=product.description%></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Edit Product</button>
+                </div>
+            </form>
+            <a href="/products/<%=product._id%>">Return</a>
+        </div>
+    </div>

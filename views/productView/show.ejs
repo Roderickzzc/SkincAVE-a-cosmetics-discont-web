@@ -1,15 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('/layouts/boilerplate')%>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card mb-3">
+                <img src="<%= product.image %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= product.name %>
+                    </h5>
+                    <p class="card-text">
+                        <%= product.description %>
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Made by <%= product.brand %>
+                    </li>
+                    <li class="list-group-item">Origin Price: $<%= product.originPrice %>/<%= product.ml %>ml
+                    </li>
+                    <li class="list-group-item">Lowest Price: $<%= product.lowestPrice %>
+                    </li>
+                    <li class="list-group-item">Lowest Price Per ML: $<%= product.lowestPerMl %>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a class="card-link btn btn-info" href="/products/<%= product._id %>/edit">Edit</a>
+                    <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                <div class="card-footer text-muted">
+                    <a href="/products">All Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show</title>
-</head>
-
-<body>
-    <h1>
+    <!-- <h1>
         <%= product.name %>
     </h1>
     <h2>
@@ -18,15 +44,16 @@
     <h2>
         $<%= product.originPrice %>
     </h2>
+    <img src="<%= product.image %>" alt="">
+    <p>
+        <%= product.description%>
+    </p>
     <p><a href="/products/<%= product._id %>/edit">Edit Product</a></p>
     <p>
     <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
         <button>Delete</button>
     </form>
-    </p>
+    </p> -->
     <footer>
         <a href="/products">All Products</a>
     </footer>
-</body>
-
-</html>

@@ -16,12 +16,14 @@ const seedDB = async () => {
     for (let i = 0; i < productData.length; i++) {
         const c = new Product({
             name: `${productData[i].name}`,
+            image: 'https://www.esteelauder.com/media/export/cms/products/640x640/el_sku_PG5001_640x640_0.jpg',
             brand: `${productData[i].brand}`,
             category: `${productData[i].category}`,
             originPrice: `${productData[i].originPrice}`,
             ml: `${productData[i].ml}`,
             lowestPrice: `${productData[i].lowestPrice}`,
-            lowestPerMl: `${productData[i].lowestPerMl}`
+            lowestPerMl: `${productData[i].lowestPerMl}`,
+            description: "dadadada"
         });
         await c.save();
     }
@@ -32,3 +34,4 @@ const seedDB = async () => {
 seedDB().then(() => {
     mongoose.connection.close();
 })
+
