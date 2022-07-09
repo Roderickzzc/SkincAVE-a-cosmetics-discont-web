@@ -2,25 +2,38 @@
     <div class="row">
         <h1 class="text-center">New Product</h1>
         <div class="col-6 offset-3">
-            <form action="/products" method="POST">
+            <form action="/products" method="POST" novalidate class="validated-form">
                 <div class="mb-3">
                     <label class="form-label" for="name">Product Name</label>
-                    <input class="form-control" type="text" id="name" name="product[name]">
+                    <input class="form-control" type="text" id="name" name="product[name]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="brand">Brand</label>
-                    <input class="form-control" type="text" id="brand" name="product[brand]">
+                    <input class="form-control" type="text" id="brand" name="product[brand]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="category">Category</label>
-                    <input class="form-control" type="text" id="category" name="product[category]">
+                    <input class="form-control" type="text" id="category" name="product[category]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="originPrice">Original Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="originPrice-label">$</span>
                         <input type="text" class="form-control" id="originPrice" placeholder="0.00"
-                            aria-label="originPrice" aria-describedby="originPrice-label" name="product[originPrice]">
+                            aria-label="originPrice" aria-describedby="originPrice-label" name="product[originPrice]"
+                            required>
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
                 </div>
                 <!-- <div class="mb-3">
@@ -29,14 +42,21 @@
                 </div> -->
                 <div class="mb-3">
                     <label class="form-label" for="ml">Volume</label>
-                    <input class="form-control" type="text" id="ml" name="product[ml]">
+                    <input class="form-control" type="text" id="ml" name="product[ml]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="lowestPrice">Lowest Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="lowestPrice-label">$</span>
                         <input type="text" class="form-control" id="lowestPrice" placeholder="0.00"
-                            aria-label="lowestPrice" aria-describedby="lowestPrice-label" name="product[lowestPrice]">
+                            aria-label="lowestPrice" aria-describedby="lowestPrice-label" name="product[lowestPrice]"
+                            required>
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
                     </div>
                 </div>
                 <!-- <div class="mb-3">
@@ -45,15 +65,24 @@
                     </div> -->
                 <div class="mb-3">
                     <label class="form-label" for="lowestPerMl">Lowest Price Per ML</label>
-                    <input class="form-control" type="text" id="lowestPerMl" name="product[lowestPerMl]">
+                    <input class="form-control" type="text" id="lowestPerMl" name="product[lowestPerMl]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="image">Image Url</label>
-                    <input class="form-control" type="text" id="image" name="product[image]">
+                    <input class="form-control" type="text" id="image" name="product[image]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" type="text" id="description" name="product[description]"></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-success">Add Product</button>
