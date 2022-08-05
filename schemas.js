@@ -11,6 +11,14 @@ module.exports.productSchema = Joi.object({
         ml: Joi.number().required().min(0),
         lowestPrice: Joi.number().required().min(0),
         lowestPerMl: Joi.number().required().min(0),
-        description: Joi.number().required(),
+        description: Joi.string().required(),
+    }).required()
+})
+
+
+module.exports.reviewSchema = Joi.object({
+    review: Joi.object({
+        rating: Joi.number().required().min(1).max(5),
+        body: Joi.string().required()
     }).required()
 })
