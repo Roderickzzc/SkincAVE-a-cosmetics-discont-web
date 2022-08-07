@@ -8,12 +8,16 @@ const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
 const session = require('express-session')
 const flash = require('connect-flash')
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
 
-const products = require('./routes/products')
-const reviews = require('./routes/reviews')
+const User = require('./models/user')
 
-mongoose.connect('mongodb://localhost:27017/skin-cave', {
-})
+const productRoutes = require('./routes/products')
+const reviewRoutes = require('./routes/reviews')
+const userRoutes = require('./routes/users')
+
+mongoose.connect('mongodb://localhost:27017/skin-cave', {})
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -42,14 +46,30 @@ const sessionConfig = {
 app.use(session(sessionConfig))
 app.use(flash())
 
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()))
+
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
 app.use((req, res, next) => {
+    console.log(req.session)
+    res.locals.currentUser = req.user
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
     next()
 })
 
-app.use('/products', products)
-app.use('/products/:id/reviews', reviews)
+app.get('/fakeUser', async (req, res) => {
+    const user = new User({ email: '1@gmail.com', username: 'abc' });
+    const newUser = await User.register(user, 'chicken');
+    res.send(newUser);
+})
+
+app.use('/', userRoutes)
+app.use('/products', productRoutes)
+app.use('/products/:id/reviews', reviewRoutes)
 
 
 
