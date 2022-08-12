@@ -1,8 +1,8 @@
 <% layout('/layouts/boilerplate')%>
     <div class="row">
         <h1 class="text-center">New Product</h1>
-        <div class="col-6 offset-3">
-            <form action="/products" method="POST" novalidate class="validated-form">
+        <div class="col-md-6 offset-md-3">
+            <form action="/products" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label" for="name">Product Name</label>
                     <input class="form-control" type="text" id="name" name="product[name]" required>
@@ -59,10 +59,10 @@
                         Looks good!
                     </div>
                 </div>
-                <!-- <div class="mb-3">
-                        <label class="form-label" for="lowestPrice">Lowest Price</label>
-                        <input class="form-control" type="text" id="lowestPrice" name="product[lowestPrice]">
-                    </div> -->
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Upload Images</label>
+                    <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                </div>
                 <div class="mb-3">
                     <label class="form-label" for="lowestPerMl">Lowest Price Per ML</label>
                     <input class="form-control" type="text" id="lowestPerMl" name="product[lowestPerMl]" required>
@@ -70,13 +70,14 @@
                         Looks good!
                     </div>
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label class="form-label" for="image">Image Url</label>
                     <input class="form-control" type="text" id="image" name="product[image]" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
-                </div>
+                </div> -->
+
                 <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" type="text" id="description" name="product[description]"></textarea>
