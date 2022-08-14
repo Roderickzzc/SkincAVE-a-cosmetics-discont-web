@@ -21,10 +21,13 @@ const helmet = require('helmet')
 const productRoutes = require('./routes/products')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
+const MongoStore = require('connect-mongo')
 
 const mongoSanitize = require('express-mongo-sanitize')
-
-mongoose.connect('mongodb://localhost:27017/skin-cave', {})
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/skin-cave'
+//mongodb://localhost:27017/skin-cave
+const secret = process.env.SECRET || 'thisshouldbebetter'
+mongoose.connect(dbUrl, {})
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -41,8 +44,16 @@ app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize())
 
-
+// const store = new MongoDBStore({
+//     url: dbUrl,
+//     secret: 'thisshouldbebetter',
+//     touchAfter: 24 * 60 * 60
+// })
+// store.on('error', function (e) {
+//     console.log('session store error', e)
+// })
 const sessionConfig = {
+    store: MongoStore.create({ mongoUrl: dbUrl }),
     name: 'juju',
     secret: 'thisshouldbebetter',
     resave: false,
